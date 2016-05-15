@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Task1
+namespace Task_2
 {
-    public class Core
+    class Core
     {
         public int[] T { get; }
 
@@ -18,7 +20,7 @@ namespace Task1
 
         public SeasonContext SeasonContext { get; }
 
-        public Trand Trand { get;  }
+        public Trand Trand { get; }
 
         public Random Random { get; }
 
@@ -28,10 +30,10 @@ namespace Task1
             T = t;
             Y = y;
 
-            SeasonComponent = new SeasonComponent(t,Y,Size);
-            SeasonContext = new SeasonContext(SeasonComponent.Value,Size);
-            Trand = new Trand(t,Y,SeasonContext.SeasonComponentCorrected);
-            Random = new Random(t,Y,SeasonContext.SeasonComponentCorrected,Trand.A,Trand.B,Trand.DeltaYSquare.Sum());
+            SeasonComponent = new SeasonComponent(t, Y, Size);
+            SeasonContext = new SeasonContext(SeasonComponent.Value, Size);
+            Trand = new Trand(t, Y, SeasonContext.SeasonComponentCorrected);
+            Random = new Random(t, Y, SeasonContext.SeasonComponentCorrected, Trand.A, Trand.B);
         }
     }
 
@@ -40,10 +42,32 @@ namespace Task1
         public SeasonComponent(IReadOnlyCollection<int> t, IReadOnlyList<double> y, int size)
         {
             var n = t.Count;
-            ThreeMonthOverall = new double[n];
-            for (var i = 1; i < n - 1; i++)
+
+            int _size = 0;
+            int p;
+            for (int i = 0; i < t.Count; i++)
             {
-                ThreeMonthOverall[i] = y[i - 1] + y[i] + y[i + 1];
+                p = i + 1;
+                if (p + size - 1 <= n)
+                {
+                    _size++;
+                }
+            }
+            ThreeMonthOverall = new double[n];
+            for (var i = 0; i < n; i++)
+            {
+                if (i >= 1 && i <= _size)
+                {
+                    ThreeMonthOverall[i] = 0;
+                    for (int j = 0; j < size; j++)
+                    {
+                        ThreeMonthOverall[i] += y[i - 1 + j];
+                    }
+                }
+                else
+                {
+                    ThreeMonthOverall[i] = 0;
+                }
             }
 
             SlideAverage = new double[n];
@@ -53,15 +77,15 @@ namespace Task1
             }
 
             SlideAverageCenter = new double[n];
-            for (var i = 2; i < n - 1; i++)
+            for (var i = 2; i <= _size; i++)
             {
                 SlideAverageCenter[i] = (SlideAverage[i] + SlideAverage[i - 1]) / 2;
             }
 
             Value = new double[n];
-            for (var i = 2; i < n - 1; i++)
+            for (var i = 2; i <= _size; i++)
             {
-                Value[i] = y[i] - SlideAverageCenter[i];
+                Value[i] = y[i] / SlideAverageCenter[i];
             }
         }
 
@@ -108,7 +132,6 @@ namespace Task1
                 SeasonComponent[i] = new List<double>();
             }
 
-
             for (var i = 0; i < seasonComponent.Length; i++)
             {
                 if (i == p)
@@ -119,7 +142,7 @@ namespace Task1
                 SeasonComponent[h].Add(seasonComponent[i]);
 
             }
-            
+
             Overall = new double[size];
             for (var i = 0; i < Overall.Length; i++)
             {
@@ -141,15 +164,15 @@ namespace Task1
                         u++;
                     }
                 }
-                SeasonComponentAverage[i] = Overall[i]/u;
+                SeasonComponentAverage[i] = Overall[i] / u;
             }
 
-            KCorrecting = SeasonComponentAverage.Sum()/size;
+            KCorrecting = size / SeasonComponentAverage.Sum();
 
             SeasonComponentCorrected = new double[size];
             for (var i = 0; i < SeasonComponentCorrected.Length; i++)
             {
-                SeasonComponentCorrected[i] = SeasonComponentAverage[i] - k;
+                SeasonComponentCorrected[i] = SeasonComponentAverage[i] * KCorrecting;
             }
         }
 
@@ -168,15 +191,11 @@ namespace Task1
     {
         public double[] Yi;
 
-        public double[] Deltat;
+        public double[] tSquare;
 
-        public double[] DeltaY;
+        public double[] YSquare;
 
-        public double[] DeltatSquare;
-
-        public double[] DeltatOndeltaY;
-
-        public double[] DeltaYSquare;
+        public double[] tOnY;
 
         public double A;
 
@@ -184,11 +203,13 @@ namespace Task1
 
         public Trand(int[] t, double[] y, double[] si)
         {
+            int n = t.Length;
+
             Yi = new double[y.Length];
             var index = 0;
             for (var i = 0; i < Yi.Length; i++)
             {
-                Yi[i] = y[i] - si[index];
+                Yi[i] = y[i] / si[index];
                 index++;
                 if (index == si.Length)
                 {
@@ -196,84 +217,59 @@ namespace Task1
                 }
             }
 
-            Deltat = new double[t.Length];
-            for (var i = 0; i < Deltat.Length; i++)
+            tSquare = new double[t.Length];
+            for (var i = 0; i < tSquare.Length; i++)
             {
-                Deltat[i] = t[i] - t.AsQueryable().Average();
+                tSquare[i] = t[i]*t[i];
             }
 
-            DeltaY = new double[y.Length];
-            for (var i = 0; i < DeltaY.Length; i++)
+            YSquare = new double[Yi.Length];
+            for (var i = 0; i < YSquare.Length; i++)
             {
-                DeltaY[i] = Yi[i] - Yi.AsQueryable().Average();
+                YSquare[i] = Yi[i] * Yi[i];
             }
 
-            DeltatSquare = new double[Deltat.Length];
-            for (var i = 0; i < Deltat.Length; i++)
+            tOnY = new double[t.Length];
+            for (var i = 0; i < YSquare.Length; i++)
             {
-                DeltatSquare[i] = Deltat[i]*Deltat[i];
+                tOnY[i] = Yi[i] * t[i];
             }
 
-            DeltatOndeltaY = new double[Deltat.Length];
-            for (var i = 0; i < DeltatOndeltaY.Length; i++)
-            {
-                DeltatOndeltaY[i] = Deltat[i]*DeltaY[i];
-            }
-
-            DeltaYSquare = new double[DeltaY.Length];
-            for (var i = 0; i < DeltaYSquare.Length; i++)
-            {
-                DeltaYSquare[i] = DeltaY[i]*DeltaY[i];
-            }
+            
 
             B = new double();
-            B = DeltatOndeltaY.Average()/DeltatSquare.Sum();
+            B = (tOnY.Sum()*n - Yi.Sum()*t.Sum())/(n*tSquare.Sum() - t.Sum()*t.Sum());
 
             A = new double();
-            A = Yi.AsQueryable().Average() -  B*t.AsQueryable().Average();
+            A = (Yi.Sum() - B*t.Sum())/n;
         }
     }
 
     public class Random
     {
-        public double[] TplusE;
-
         public double[] T;
 
-        public double[] TplusS;
+        public double[] TOnS;
 
         public double[] E;
 
-        public double[] ESquare;
-
         public double Quality;
 
-        public Random(int[] t, double[] y, double[] s, double a, double b, double deltaYSquareSum)
+        public Random(int[] t, double[] y, double[] s, double a, double b)
         {
             var h = 0;
-
-            TplusE = new double[t.Length];
-            for (var i = 0; i < TplusE.Length; i++)
-            {
-                TplusE[i] = y[i] - s[h];
-                h++;
-                if (h == s.Length)
-                {
-                    h = 0;
-                }
-            }
 
             T = new double[t.Length];
             for (var i = 0; i < T.Length; i++)
             {
-                T[i] = a + b*t[i];
+                T[i] = a + b * t[i];
             }
 
             h = 0;
-            TplusS = new double[T.Length];
-            for (var i = 0; i < TplusS.Length; i++)
+            TOnS = new double[T.Length];
+            for (var i = 0; i < TOnS.Length; i++)
             {
-                TplusS[i] = T[i] + s[h];
+                TOnS[i] = T[i] * s[h];
                 h++;
                 if (h == s.Length)
                 {
@@ -284,16 +280,25 @@ namespace Task1
             E = new double[T.Length];
             for (var i = 0; i < E.Length; i++)
             {
-                E[i] = y[i] - TplusS[i];
+                E[i] = y[i] / TOnS[i];
             }
 
-            ESquare = new double[E.Length];
-            for (var i = 0; i < ESquare.Length; i++)
+            int n = t.Length;
+            double[] temp = new double[n];
+            for (int i = 0; i < temp.Length; i++)
             {
-                ESquare[i] = E[i]*E[i];
+                temp[i] = y[i] - TOnS[i];
+                temp[i] *= temp[i];
+            }
+            double _temp = temp.Sum();
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i] = y[i] - y.Average();
+                temp[i] *= temp[i];
             }
 
-            Quality = ESquare.Sum()/deltaYSquareSum;
+            Quality = 1 - (_temp/temp.Sum());
         }
     }
 }
