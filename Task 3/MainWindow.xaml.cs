@@ -24,5 +24,38 @@ namespace Task_3
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            int n = Convert.ToInt16(textBox.Text);
+            loading.Maximum = n;
+            loading.Value = 0;
+            if (comboBox.SelectedIndex == 0)
+            {
+                Rand r = new Rand();
+                for (int i = 0; i < n; i++)
+                {
+                    listBox.Items.Add(r.Next());
+                    loading.Value++;
+                }
+            }
+            else
+            {
+                FRand r = new FRand();
+                for (int i = 0; i < n; i++)
+                {
+                    listBox.Items.Add(r.Next());
+                    loading.Value++;
+                }
+            }
+
+
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            listBox.Items.Clear();
+        }
     }
 }

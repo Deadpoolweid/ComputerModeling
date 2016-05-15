@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task_3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="389.474" Width="525">
     <Grid>
-        
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="517">
+            <MenuItem Header="MenuItem"/>
+        </Menu>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,46,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="button" Content="Сгенерировать" HorizontalAlignment="Left" Margin="225,46,0,0" VerticalAlignment="Top" Width="182" Click="button_Click" Height="22"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="253" Margin="10,95,0,0" VerticalAlignment="Top" Width="397"/>
+        <Button x:Name="button1" Content="Очистить" HorizontalAlignment="Left" Margin="412,95,0,0" VerticalAlignment="Top" Width="95" Click="button1_Click" Height="34"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="100,46,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+            <ComboBoxItem Content="Линейный конгруэнтный метод" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Метод Фиббоначи с запаздываниями" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <ProgressBar x:Name="loading" HorizontalAlignment="Left" Height="17" Margin="10,73,0,0" VerticalAlignment="Top" Width="397"/>
+
     </Grid>
 </Window>
