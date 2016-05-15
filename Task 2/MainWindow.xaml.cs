@@ -88,7 +88,8 @@ namespace Task2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при обработке данных. Информация: " + ex);
+                MessageBox.Show("Ошибка при обработке данных. Возможно данные повреждены или представлены в неправильном формате. Читайте справку. " +
+                                "Информация: " + ex);
                 MainWindow w = new MainWindow();
                 w.Show();
                 _loading.Close();
@@ -143,7 +144,7 @@ namespace Task2
             ShowSeason();
             ShowTrand();
             ShowRandom();
-            ShowGraph(_core.T,_core.Random.T, _core.T,_core.Y);
+            ShowGraph(_core.T,_core.Random.T, _core.Y,_core.Trand.Yi);
             _loading.Close();
             IsHitTestVisible = true;
         }
@@ -371,7 +372,7 @@ namespace Task2
                     {
                         "", _core.T[i], _core.Y[i], _core.SeasonContext.SeasonComponentCorrected[index].ToString(format),
                         trand.Yi[i].ToString(format), trand.tSquare[i].ToString(format), trand.YSquare[i].ToString(format),
-                        trand.tOnY[i]
+                        trand.tOnY[i].ToString(format)
                     };
                     index++;
                     if (index == _core.SeasonContext.SeasonComponentCorrected.Length)
@@ -483,7 +484,7 @@ namespace Task2
             DgRandom.DataContext = table.DefaultView;
         }
 
-        private void ShowGraph(int[] x ,double[] y, int[] x1, double[] y1)
+        private void ShowGraph(int[] x ,double[] y, double[] y1, double[] y2)
         {
             var points = new ObservableCollection<Coord>();
 
@@ -496,12 +497,22 @@ namespace Task2
             //LineSeries.ItemsSource = points;
 
             points = new ObservableCollection<Coord>();
-            for (var i = 0; i < x1.Length; i++)
+            for (var i = 0; i < x.Length; i++)
             {
-                points.Add(new Coord(x1[i], y1[i]));
+                points.Add(new Coord(x[i], y1[i]));
             }
 
             dataSourceList.Add(points);
+
+
+            points = new ObservableCollection<Coord>();
+            for (var i = 0; i < x.Length; i++)
+            {
+                points.Add(new Coord(x[i], y2[i]));
+            }
+
+            dataSourceList.Add(points);
+
 
             Chart.DataContext = dataSourceList;
             //LineSeriesY.ItemsSource = points;

@@ -117,7 +117,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Graph" Margin="-4,0,0,-2">
+            <TabItem x:Name="Graph" Margin="-5,0,1,-2">
                 <TabItem.Header>
                     <TextBlock Margin="3">График</TextBlock>
                 </TabItem.Header>
@@ -146,6 +146,14 @@
                             <chartingToolkit:LineSeries.ItemsSource>
                                 <Binding>
                                     <Binding.Path>[1]</Binding.Path>
+                                </Binding>
+                            </chartingToolkit:LineSeries.ItemsSource>
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:LineSeries x:Name="LineSeriesZ" DependentValuePath="Y" IndependentValuePath="X"
+                                                    Title="Скорректированные данные">
+                            <chartingToolkit:LineSeries.ItemsSource>
+                                <Binding>
+                                    <Binding.Path>[2]</Binding.Path>
                                 </Binding>
                             </chartingToolkit:LineSeries.ItemsSource>
                         </chartingToolkit:LineSeries>
