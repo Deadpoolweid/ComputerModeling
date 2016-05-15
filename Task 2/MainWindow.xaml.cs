@@ -84,7 +84,7 @@ namespace Task2
 
             try
             {
-                Main();
+                main();
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace Task2
             Close();
         }
 
-        private void Main()
+        private void main()
         {
             _loading.Show();
 
