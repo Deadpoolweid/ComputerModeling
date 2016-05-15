@@ -1,0 +1,168 @@
+﻿<Window x:Class="Task1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        mc:Ignorable="d"
+        Title="Task1" Height="766" Width="1024">
+    <Grid>
+        <Menu x:Name="Menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="1015">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" HorizontalAlignment="Left" Width="140" Click="OpenFile"/>
+                <MenuItem Header="Выход" HorizontalAlignment="Left" Width="140" Click="Exit"/>
+            </MenuItem>
+            <MenuItem x:Name="Help" Header="Справка" Click="MenuItem_Click"/>
+        </Menu>
+
+        <TabControl x:Name="TabControl" Visibility="Visible"  HorizontalAlignment="Left" Height="715" Margin="0,20,0,0" VerticalAlignment="Top" Width="1015">
+            <TabItem x:Name="Init">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <!--<Ellipse Height="10" Width="10" Fill="Black" />-->
+                        <TextBlock Margin="3">Исходные данные</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="DataGrid" Margin="97,24,107,17" ItemsSource="{Binding Data}" IsReadOnly="True" CanUserReorderColumns="False" CanUserSortColumns="False"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Slides" Margin="-6,0,2,-2">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <!--<Rectangle Height="10" Width="10" Fill="Black" />-->
+                        <TextBlock Margin="3" Text="Скользящие компоненты" ToolTip="Скользящая компонента"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="DgSlides" Margin="97,24,107,17" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserReorderColumns="False" IsReadOnly="True" />
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Season" Margin="-7,0,7,-2">
+                <TabItem.Header>
+                    <TextBlock Margin="3" Text="Оценка сезонной составляющей"/>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="DgSeason" Margin="97,24,107,17" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Trand" Margin="-8,0,4,-2">
+                <TabItem.Header>
+                    <TextBlock Margin="3" Text="Трендовая модель"/>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="DgTrand" Margin="97,24,107,17" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Random" Margin="-8,0,4,-2">
+                <TabItem.Header>
+                    <TextBlock Margin="3">Случайная</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="DgRandom" Margin="97,24,107,17" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Graph" Margin="-4,0,0,-2">
+                <TabItem.Header>
+                    <TextBlock Margin="3">График</TextBlock>
+                </TabItem.Header>
+                <Grid>
+                    <Button Margin="7,274,922,337" BorderThickness="0" Click="Left_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/left.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="917,274,12,337" BorderThickness="0" Click="Right_Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/right.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <chartingToolkit:Chart x:Name="Chart" Margin="97,33,97,67">
+                        <chartingToolkit:LineSeries x:Name="LineSeries" DependentValuePath="Y" IndependentValuePath="X"
+                                                    Title="Трендовая модель">
+                            <chartingToolkit:LineSeries.ItemsSource>
+                                <Binding>
+                                    <Binding.Path>[0]</Binding.Path>
+                                </Binding>
+                            </chartingToolkit:LineSeries.ItemsSource>
+                        </chartingToolkit:LineSeries>
+                        <chartingToolkit:LineSeries x:Name="LineSeriesY" DependentValuePath="Y" IndependentValuePath="X"
+                                                    Title="Исходные данные">
+                            <chartingToolkit:LineSeries.ItemsSource>
+                                <Binding>
+                                    <Binding.Path>[1]</Binding.Path>
+                                </Binding>
+                            </chartingToolkit:LineSeries.ItemsSource>
+                        </chartingToolkit:LineSeries>
+                    </chartingToolkit:Chart>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="Open" HorizontalAlignment="Left" Margin="820,10,0,0" VerticalAlignment="Top" Width="100" Height="80" Click="OpenFile" BorderThickness="1" Padding="1">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/folder.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Save" Content="" HorizontalAlignment="Left" Margin="925,5,0,0" VerticalAlignment="Top" Width="85" Height="85" Click="save_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/save.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
+
