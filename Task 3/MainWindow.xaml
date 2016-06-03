@@ -10,15 +10,22 @@
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="517">
             <MenuItem Header="MenuItem"/>
         </Menu>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,46,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="button" Content="Сгенерировать" HorizontalAlignment="Left" Margin="225,46,0,0" VerticalAlignment="Top" Width="182" Click="button_Click" Height="22"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="253" Margin="10,95,0,0" VerticalAlignment="Top" Width="397"/>
-        <Button x:Name="button1" Content="Очистить" HorizontalAlignment="Left" Margin="412,95,0,0" VerticalAlignment="Top" Width="95" Click="button1_Click" Height="34"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="100,46,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
-            <ComboBoxItem Content="Линейный конгруэнтный метод" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Метод Фиббоначи с запаздываниями" HorizontalAlignment="Left" Width="118"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,30,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="button" Content="Сгенерировать" HorizontalAlignment="Left" Margin="325,30,0,0" VerticalAlignment="Top" Width="182" Click="button_Click" Height="22"/>
+        <ListBox x:Name="ListBox" HorizontalAlignment="Left" Height="242" Margin="10,106,0,0" VerticalAlignment="Top" Width="397" />
+            <Button x:Name="button1" Content="Очистить" HorizontalAlignment="Left" Margin="412,106,0,0" VerticalAlignment="Top" Width="95" Click="button1_Click" Height="34"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="100,30,0,0" VerticalAlignment="Top" Width="220" SelectedIndex="0" SelectionChanged="comboBox_SelectionChanged">
+            <ComboBoxItem Content="Линейный конгруэнтный метод" HorizontalAlignment="Left"/>
+            <ComboBoxItem Content="Метод Фиббоначи с запаздываниями" HorizontalAlignment="Left"/>
+            <ComboBoxItem Content="Вычисление числа π" HorizontalAlignment="Left"/>
         </ComboBox>
-        <ProgressBar x:Name="loading" HorizontalAlignment="Left" Height="17" Margin="10,73,0,0" VerticalAlignment="Top" Width="397"/>
+        <ProgressBar x:Name="loading" HorizontalAlignment="Left" Height="17" Margin="10,57,0,0" VerticalAlignment="Top" Width="497"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="55,79,0,0" TextWrapping="Wrap" Text="1664525" VerticalAlignment="Top" Width="96"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="196,80,0,0" TextWrapping="Wrap" Text="1013904223" VerticalAlignment="Top" Width="139"/>
+        <Label x:Name="label1" Content="a =" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="40"/>
+        <Label x:Name="label2" Content="c =" HorizontalAlignment="Left" Margin="156,76,0,0" VerticalAlignment="Top" Width="35"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="381,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="123"/>
+        <Label x:Name="label3" Content="m =" HorizontalAlignment="Left" Margin="339,77,0,0" VerticalAlignment="Top" Width="37"/>
 
     </Grid>
 </Window>

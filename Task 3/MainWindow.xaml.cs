@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Task_3
         public MainWindow()
         {
             InitializeComponent();
+            textBox3.Text = Math.Pow(2, 32).ToString();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -32,30 +34,114 @@ namespace Task_3
             loading.Value = 0;
             if (comboBox.SelectedIndex == 0)
             {
-                Rand r = new Rand();
+                Rand r = new Rand(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text));
                 for (int i = 0; i < n; i++)
                 {
-                    listBox.Items.Add(r.Next());
+                    Data.AddRand(r.Next());
+                    loading.Value++;
+                }
+            }
+            else if (comboBox.SelectedIndex == 1)
+            {
+                FRand r = new FRand(Convert.ToInt32(textBox1.Text),Convert.ToInt32(textBox.Text));
+                for (int i = 0; i < n; i++)
+                {
+                    Data.AddRandF(r.Next());
                     loading.Value++;
                 }
             }
             else
             {
-                FRand r = new FRand();
+                PI pi = new PI(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text));
                 for (int i = 0; i < n; i++)
                 {
-                    listBox.Items.Add(r.Next());
+                    Data.AddPi(pi.Value);
+                    pi.Calculate();
                     loading.Value++;
                 }
             }
 
-
-
+            listUpdate();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            listBox.Items.Clear();
+            Data.Clear((Lists)comboBox.SelectedIndex);
+            listUpdate();
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!this.IsLoaded)
+            {
+                return;
+            }
+            int s = comboBox.SelectedIndex;
+            if (s == 0)
+            {
+                label1.Content = "a =";
+                textBox1.Text = "1664525";
+
+                label2.Content = "c =";
+                textBox2.Text = "1013904223";
+
+                textBox.IsEnabled = true;
+                label3.Content = "m =";
+                textBox3.Text = Math.Pow(2, 32).ToString(CultureInfo.CurrentCulture);
+            }
+            else if (s == 1)
+            {
+                label1.Content = "a =";
+                textBox1.Text = "17";
+
+                label2.Content = "b =";
+                textBox2.Text = "5";
+
+                textBox3.IsEnabled = false;
+                label3.Content = "";
+                textBox3.Text = "";
+            }
+            else
+            {
+                label1.Content = "r =";
+                textBox1.Text = "1";
+
+                label2.Content = "N =";
+                textBox2.Text = "1000";
+
+                textBox3.IsEnabled = false;
+                label3.Content = "";
+                textBox3.Text = "";
+            }
+
+            listUpdate();
+        }
+
+        void listUpdate()
+        {
+            int s = comboBox.SelectedIndex;
+            ListBox.Items.Clear();
+            if (s == 0)
+            {
+                foreach (var e in Data.rand)
+                {
+                    ListBox.Items.Add(e);
+                }
+            }
+            else if (s == 1)
+            {
+                foreach (var e in Data.randF)
+                {
+                    ListBox.Items.Add(e);
+                }
+            }
+            else
+            {
+                foreach (var e in Data.pi)
+                {
+                    ListBox.Items.Add(e);
+                }
+            }
         }
     }
 }
