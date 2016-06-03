@@ -85,7 +85,7 @@ namespace Task_3
                 label2.Content = "c =";
                 textBox2.Text = "1013904223";
 
-                textBox.IsEnabled = true;
+                textBox3.IsEnabled = true;
                 label3.Content = "m =";
                 textBox3.Text = Math.Pow(2, 32).ToString(CultureInfo.CurrentCulture);
             }
@@ -142,6 +142,45 @@ namespace Task_3
                     ListBox.Items.Add(e);
                 }
             }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            this.IsEnabled = false;
+            int s = comboBox.SelectedIndex;
+            Graph g;
+            int n;
+
+            List<double> nList = new List<double>();
+
+            if (s == 0)
+            {
+                for (int i = 0; i < Data.rand.Count; i++)
+                {
+                    nList.Add(i + 1);
+                }
+                g = new Graph(Data.rand, nList);
+            }
+            else if (s == 1)
+            {
+                for (int i = 0; i < Data.randF.Count; i++)
+                {
+                    nList.Add(i + 1);
+                }
+                g = new Graph(Data.randF, nList);
+            }
+            else
+            {
+                for (int i = 0; i < Data.pi.Count; i++)
+                {
+                    nList.Add(i + 1);
+                }
+                g = new Graph(Data.pi, nList);
+            }
+
+            g.ShowDialog();
+
+            IsEnabled = true;
         }
     }
 }
