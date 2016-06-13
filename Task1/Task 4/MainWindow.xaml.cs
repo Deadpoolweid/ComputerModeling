@@ -55,9 +55,9 @@ namespace Task_4
             {
 
 
-                Data.A.Add(r.Next(0, aMax));
+                Data.A.Add(r.Next(1, aMax));
 
-                Data.B.Add(r.Next(0, bMax));
+                Data.B.Add(r.Next(1, bMax));
 
                 if (i == 0)
                 {
@@ -130,8 +130,6 @@ namespace Task_4
 
         void Draw(List<int> n, List<int> x)
         {
-            var points = new KeyValuePair<int,int>();
-
             KeyValuePair<int,int>[] pairs = new KeyValuePair<int, int>[n.Count];
 
             for (var i = 0; i < n.Count; i++)
@@ -139,16 +137,24 @@ namespace Task_4
                 pairs[i] = new KeyValuePair<int, int>(n[i],x[i]);
             }
 
-            points = new KeyValuePair<int, int>();
-
-            var dataSourceList = new KeyValuePair<int, int>();
-
 
             //LineSeries.ItemsSource = points;
 
             BarSeries.ItemsSource = pairs;
 
             //Chart.DataContext = dataSourceList;
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            IsEnabled = false;
+            Pearson w = new Pearson();
+
+            w.main(Data.A.ToArray(),Data.B.ToArray());
+            
+            w.Show();
+
+            IsEnabled = true;
         }
     }
 }
