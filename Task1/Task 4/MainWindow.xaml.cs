@@ -30,6 +30,8 @@ namespace Task_4
             InitializeComponent();
         }
 
+        private int aMax, bMax;
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Data.Clear();
@@ -48,8 +50,8 @@ namespace Task_4
 
             Random r = new Random(DateTime.Now.Millisecond);
 
-            int aMax = Convert.ToInt32(textBox.Text);
-            int bMax = Convert.ToInt32(textBox_Copy.Text);
+            aMax = Convert.ToInt32(textBox.Text);
+            bMax = Convert.ToInt32(textBox_Copy.Text);
 
             for (int i = 0; i < 5; i++)
             {
@@ -148,9 +150,16 @@ namespace Task_4
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             IsEnabled = false;
-            Pearson w = new Pearson();
 
-            w.main(Data.A.ToArray(),Data.B.ToArray());
+
+            List<int> Second = new List<int>();
+            Random r = new Random(DateTime.Now.Millisecond);
+            for (int i = 0; i < 5; i++)
+            {
+                Second.Add(r.Next(1,aMax));
+            }
+
+            Pearson w = new Pearson(Data.A.ToArray(), Second.ToArray());
             
             w.Show();
 

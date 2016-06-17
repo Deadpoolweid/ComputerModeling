@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task_4"
         mc:Ignorable="d"
-        Title="Pearson" Height="369.925" Width="561.654">
+        Title="Pearson" Height="369.925" Width="590.654">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="319" Width="402"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="439,14,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="p" HorizontalAlignment="Left" Margin="417,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Результат" HorizontalAlignment="Left" Margin="439,134,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lResult" Content="" HorizontalAlignment="Left" Margin="424,165,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Расчитать" HorizontalAlignment="Left" Margin="463,58,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>
