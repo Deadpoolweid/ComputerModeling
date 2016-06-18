@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 3", "..\Task 3\Task 3.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "..\Launcher\Launcher.csproj", "{55FD8B8E-79F5-473A-88FA-4130B9BDE251}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 4", "Task 4\Task 4.csproj", "{A5AC70D5-F7B8-42A8-BA02-5990B4B8E511}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 4", "..\Task 4\Task 4.csproj", "{A5AC70D5-F7B8-42A8-BA02-5990B4B8E511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -130,6 +130,56 @@ namespace Task_4
 
         }
 
+        private dData execExperiment(int n)
+        {
+            List<int> a, b, c, d, e, f, g, h;
+
+            a = new List<int>();
+            b = new List<int>();
+            c = new List<int>();
+            d = new List<int>();
+            e = new List<int>();
+            f = new List<int>();
+            g = new List<int>();
+            h = new List<int>();
+
+            Random r = new Random(DateTime.Now.Millisecond+1);
+
+            aMax = Convert.ToInt32(textBox.Text);
+            bMax = Convert.ToInt32(textBox_Copy.Text);
+
+            for (int i = 0; i < 5; i++)
+            {
+
+
+                a.Add(r.Next(1, aMax));
+
+                b.Add(r.Next(1, bMax));
+
+                if (i == 0)
+                {
+                    c.Add(0);
+                    d.Add(0);
+                    e.Add(b[i]);
+                    f.Add(e[i] - c[i]);
+                    g.Add(0);
+                    h.Add(0);
+                }
+                else
+                {
+                    c.Add(c[i - 1] + a[i]);
+                    d.Add(Math.Max(c[i], e[i - 1]));
+                    e.Add(d[i] + b[i]);
+                    f.Add(e[i] - c[i]);
+                    g.Add(f[i] - b[i]);
+                    h.Add(d[i] - e[i - 1]);
+                }
+
+            }
+
+            return new dData(a,b,c,d,e,f,g,h);
+        }
+
         void Draw(List<int> n, List<int> x)
         {
             KeyValuePair<int,int>[] pairs = new KeyValuePair<int, int>[n.Count];
@@ -145,6 +195,20 @@ namespace Task_4
             BarSeries.ItemsSource = pairs;
 
             //Chart.DataContext = dataSourceList;
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            IsEnabled = false;
+
+            dData datamain = new dData(Data.A,Data.B, Data.C, Data.D, Data.E, Data.F, Data.G,Data.H);
+
+            dData data = execExperiment(5);
+            Fisher f = new Fisher(Data.H.ToArray(),data.H.ToArray());
+            f.Show();
+
+            IsEnabled = true;
+
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

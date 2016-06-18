@@ -8,8 +8,6 @@ namespace Task_4
 {
     class cdata
     {
-        public int i;
-
         public double A;
 
         public double B;
@@ -26,9 +24,8 @@ namespace Task_4
 
         public double H;
 
-        public cdata(int i, double a, double b, double c, double d, double e, double f, double g, double h)
+        public cdata(double a, double b, double c, double d, double e, double f, double g, double h)
         {
-            this.i = i;
             A = a;
             B = b;
             C = c;
