@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,31 @@ namespace Launcher
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            Hide();
 
+            int c = comboBox.SelectedIndex + 1;
+
+            switch (c)
+            {
+                case 1:
+                    var app1 = new Task1.MainWindow();
+                    app1.ShowDialog();
+                    break;
+                case 2:
+                    var app2 = new Task2.MainWindow();
+                    app2.ShowDialog();
+                    break;
+                case 3:
+                    var app3 = new Task_3.MainWindow();
+                    app3.ShowDialog();
+                    break;
+                case 4:
+                    var app4 = new Task_4.MainWindow();
+                    app4.ShowDialog();
+                    break;
+            }
+
+            Visibility = Visibility.Visible;
         }
     }
 }

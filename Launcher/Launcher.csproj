@@ -95,6 +95,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Task 2\Task 2.csproj">
+      <Project>{d8a2cdb5-04da-4b86-ba3b-0154e8c886f8}</Project>
+      <Name>Task 2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task 3\Task 3.csproj">
+      <Project>{fa600f06-e1dc-4ebf-86eb-ddb227f56fb5}</Project>
+      <Name>Task 3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task 4\Task 4.csproj">
+      <Project>{a5ac70d5-f7b8-42a8-ba02-5990b4b8e511}</Project>
+      <Name>Task 4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task1\Task 1.csproj">
+      <Project>{f6540b95-55e8-45a3-a942-7dc8472f0542}</Project>
+      <Name>Task 1</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

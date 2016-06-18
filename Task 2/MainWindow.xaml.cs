@@ -13,13 +13,14 @@ using Task_2;
 using Application = Microsoft.Office.Interop.Excel.Application;
 using DataTable = System.Data.DataTable;
 using Size = System.Windows.Size;
+using Window = System.Windows.Window;
 
 namespace Task2
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : Window
     {
         private Core _core;
 
