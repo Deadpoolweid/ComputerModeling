@@ -109,9 +109,9 @@ namespace Task_4
 
 
 
-            label.Content = "g среднее = " + Data.G.Average();
+            label.Content = "gср = " + Data.G.Average();
 
-            label1.Content = "h среднее = " + Data.H.Average();
+            label1.Content = "hср = " + Data.H.Average();
 
             List<int> x = new List<int>();
             List<int> y = new List<int>();
@@ -209,6 +209,17 @@ namespace Task_4
 
             IsEnabled = true;
 
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            IsEnabled = false;
+
+            dData data = execExperiment(5);
+
+            Student s = new Student(Data.H.ToArray(),data.H.ToArray());
+            s.Show();
+            IsEnabled = true;
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

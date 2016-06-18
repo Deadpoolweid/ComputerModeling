@@ -11,8 +11,8 @@
     <Grid>
         <Button x:Name="button" Content="Начать" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <DataGrid x:Name="data" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="199" Width="431" />
-        <Label x:Name="label" Content="g среднее" HorizontalAlignment="Left" Margin="427,3,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="h среднее" HorizontalAlignment="Left" Margin="527,3,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="gср" HorizontalAlignment="Left" Margin="427,3,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="hср" HorizontalAlignment="Left" Margin="490,4,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dgInfo" HorizontalAlignment="Left" Margin="446,35,0,0" VerticalAlignment="Top" Height="199" Width="325" CanUserReorderColumns="False" CanUserSortColumns="False"/>
 
         <chartingToolkit:Chart x:Name="Chart" Margin="10,239,10,10">
@@ -24,7 +24,8 @@
         <Label x:Name="label2" Content="Amax" HorizontalAlignment="Left" Margin="90,4,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="301,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="5"/>
         <Label x:Name="label2_Copy" Content="Bmax" HorizontalAlignment="Left" Margin="258,4,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Пирсон" HorizontalAlignment="Left" Margin="616,10,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
-        <Button x:Name="button2" Content="Фишер" HorizontalAlignment="Left" Margin="696,10,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+        <Button x:Name="button1" Content="Пирсон" HorizontalAlignment="Left" Margin="573,10,0,0" VerticalAlignment="Top" Width="62" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Фишер" HorizontalAlignment="Left" Margin="640,10,0,0" VerticalAlignment="Top" Width="62" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Стьюдент" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="64" Click="button3_Click"/>
     </Grid>
 </Window>
