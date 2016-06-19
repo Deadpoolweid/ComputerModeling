@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -96,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Life\Life.csproj">
+      <Project>{a63ca999-5d08-4284-90b3-d22a9d18164d}</Project>
+      <Name>Life</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Task 2\Task 2.csproj">
       <Project>{d8a2cdb5-04da-4b86-ba3b-0154e8c886f8}</Project>
       <Name>Task 2</Name>

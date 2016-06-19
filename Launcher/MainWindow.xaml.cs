@@ -50,6 +50,10 @@ namespace Launcher
                     var app4 = new Task_4.MainWindow();
                     app4.ShowDialog();
                     break;
+                case 5:
+                    var app5 = new Life.Form1();
+                    app5.ShowDialog();
+                    break;
             }
 
             Visibility = Visibility.Visible;
