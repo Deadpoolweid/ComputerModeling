@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Task1
 {
@@ -19,6 +20,8 @@ namespace Task1
             }
             Combobox.SelectedIndex = 0;
         }
+
+        public ComboBox comboBox => this.Combobox;
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Размер окна сглаживания" Height="227" Width="324" ResizeMode="NoResize">
+        Title="Размер окна сглаживания" Height="151" Width="324" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="Label" Content="Укажите размер окна сглаживания" HorizontalAlignment="Left" Margin="50,35,0,0" VerticalAlignment="Top" Grid.IsSharedSizeScope="True"/>
-        <Button x:Name="Button" Content="ОК" HorizontalAlignment="Left" Margin="95,120,0,0" VerticalAlignment="Top" Width="105" Height="45" Click="button_Click"/>
-        <ComboBox x:Name="Combobox" HorizontalAlignment="Left" Margin="85,78,0,0" VerticalAlignment="Top" Width="120"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="Label" Content="Укажите размер окна сглаживания" HorizontalAlignment="center"/>
+        <ComboBox Grid.Row="1" MinWidth="100" Margin="0,15,0,15" x:Name="Combobox" HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" MinWidth="100" Margin="0,15,0,15" x:Name="Button" Content="ОК" HorizontalAlignment="Center" Click="button_Click"/>
     </Grid>
 </Window>

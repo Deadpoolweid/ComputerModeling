@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Launcher
         public MainWindow()
         {
             InitializeComponent();
+            comboBox.SelectedIndex = 0;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -56,7 +58,12 @@ namespace Launcher
                     break;
             }
 
-            Visibility = Visibility.Visible;
+            Show();
+        }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

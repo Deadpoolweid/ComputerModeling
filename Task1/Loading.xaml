@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task1"
         mc:Ignorable="d"
-        Title="Загрузка" Height="142" Width="302.625">
+        Title="Загрузка" Height="150" Width="300">
     <Grid>
-        <ProgressBar x:Name="Progress" HorizontalAlignment="Left" Height="30" Margin="5,65,0,0" VerticalAlignment="Top" Width="285" IsIndeterminate="True"/>
-        <Label x:Name="Label" Content="Обработка данных..." HorizontalAlignment="Left" Margin="20,19,0,0" VerticalAlignment="Top" Width="260"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="Label" Content="Обработка данных..." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ProgressBar Grid.Row="1" x:Name="Progress" IsIndeterminate="True" Margin="15"/>
     </Grid>
 </Window>

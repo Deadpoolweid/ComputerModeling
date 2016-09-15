@@ -9,9 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
-using Task_2;
+using Task1;
 using Application = Microsoft.Office.Interop.Excel.Application;
+using Core = Task_2.Core;
 using DataTable = System.Data.DataTable;
+using SeasonComponentSingle = Task_2.SeasonComponentSingle;
 using Size = System.Windows.Size;
 using Window = System.Windows.Window;
 
@@ -131,21 +133,21 @@ namespace Task2
             var y = new double[n];
             for (var i = 0; i < n; i++)
             {
-                y[i] = double.Parse(data.Rows[i][1].ToString().Replace('.',','));
+                y[i] = double.Parse(data.Rows[i][1].ToString().Replace('.', ','));
             }
 
-            var w = new Size(n);
+            var w = new Task1.Size(n);
 
             w.ShowDialog();
-            var size = int.Parse(w.Combobox.Text);
+            var size = int.Parse(w.comboBox.Text);
 
-            _core = new Core(t,y,size);
+            _core = new Core(t, y, size);
 
             ShowSlides();
             ShowSeason();
             ShowTrand();
             ShowRandom();
-            ShowGraph(_core.T,_core.Random.T, _core.Y,_core.Trand.Yi);
+            ShowGraph(_core.T, _core.Random.T, _core.Y, _core.Trand.Yi);
             _loading.Close();
             IsHitTestVisible = true;
         }
@@ -168,7 +170,7 @@ namespace Task2
             int i;
             for (i = 0; i < n; i++)
             {
-                scSingle[i] = new SeasonComponentSingle(sc.Value[i],sc.ThreeMonthOverall[i],sc.SlideAverage[i],sc.SlideAverageCenter[i]);
+                scSingle[i] = new SeasonComponentSingle(sc.Value[i], sc.ThreeMonthOverall[i], sc.SlideAverage[i], sc.SlideAverageCenter[i]);
             }
 
             i = 0;
@@ -218,13 +220,13 @@ namespace Task2
 
             for (var j = 0; j < _core.Size; j++)
             {
-                table.Columns.Add(new DataColumn((j+1) + " часть промежутка"));
+                table.Columns.Add(new DataColumn((j + 1) + " часть промежутка"));
             }
 
             int i;
             var format = "0.00";
-            var k = _core.Count/_core.Size;
-            for (i = 0; i < (k)+5; i++)
+            var k = _core.Count / _core.Size;
+            for (i = 0; i < (k) + 5; i++)
             {
                 var dr = table.NewRow();
                 var text = new string[_core.Size];
@@ -242,8 +244,8 @@ namespace Task2
                         }
                     }
 
-                    var array = new object[_core.Size+1];
-                    
+                    var array = new object[_core.Size + 1];
+
                     for (var j = 0; j < dr.ItemArray.Length; j++)
                     {
                         if (j == 0)
@@ -280,7 +282,7 @@ namespace Task2
                     }
                     dr.ItemArray = array;
                 }
-                else if (i == k+1)
+                else if (i == k + 1)
                 {
                     for (var j = 0; j < _core.Size; j++)
                     {
@@ -302,7 +304,7 @@ namespace Task2
                     }
                     dr.ItemArray = array;
                 }
-                else if (i == k+2)
+                else if (i == k + 2)
                 {
                     for (var j = 0; j < _core.Size; j++)
                     {
@@ -324,11 +326,11 @@ namespace Task2
                     }
                     dr.ItemArray = array;
                 }
-                else if (i == k+3)
+                else if (i == k + 3)
                 {
-                    dr.ItemArray = new object[] {};
+                    dr.ItemArray = new object[] { };
                 }
-                else if (i == k+4)
+                else if (i == k + 4)
                 {
                     dr.ItemArray = new object[]
                     {
@@ -337,7 +339,7 @@ namespace Task2
                 }
                 table.Rows.Add(dr);
             }
-           
+
 
             DgSeason.DataContext = table.DefaultView;
         }
@@ -363,7 +365,7 @@ namespace Task2
 
             var index = 0;
 
-            for (var i = 0; i < n+5; i++)
+            for (var i = 0; i < n + 5; i++)
             {
                 var dr = table.NewRow();
 
@@ -389,7 +391,7 @@ namespace Task2
                         trand.tOnY.Sum().ToString(format)
                     };
                 }
-                else if (i == n +1)
+                else if (i == n + 1)
                 {
                     dr.ItemArray = new object[]
                     {
@@ -397,7 +399,7 @@ namespace Task2
                 }
                 else if (i == n + 2)
                 {
-                    dr.ItemArray = new object[] {};
+                    dr.ItemArray = new object[] { };
                 }
                 else if (i == n + 3)
                 {
@@ -417,7 +419,7 @@ namespace Task2
                 table.Rows.Add(dr);
             }
 
-            
+
 
             DgTrand.DataContext = table.DefaultView;
         }
@@ -441,7 +443,7 @@ namespace Task2
 
             var index = 0;
 
-            for (var i = 0; i < n+3; i++)
+            for (var i = 0; i < n + 3; i++)
             {
                 var dr = table.NewRow();
 
@@ -465,11 +467,11 @@ namespace Task2
                     {
                     };
                 }
-                else if (i == n+1)
+                else if (i == n + 1)
                 {
                     dr.ItemArray = new object[] { };
                 }
-                else if (i == n+2)
+                else if (i == n + 2)
                 {
                     dr.ItemArray = new object[]
                     {
@@ -485,16 +487,16 @@ namespace Task2
             DgRandom.DataContext = table.DefaultView;
         }
 
-        private void ShowGraph(int[] x ,double[] y, double[] y1, double[] y2)
+        private void ShowGraph(int[] x, double[] y, double[] y1, double[] y2)
         {
             var points = new ObservableCollection<Coord>();
 
             for (var i = 0; i < x.Length; i++)
             {
-                points.Add(new Coord(x[i],y[i]));
+                points.Add(new Coord(x[i], y[i]));
             }
 
-            var dataSourceList = new List<ObservableCollection<Coord>> {points};
+            var dataSourceList = new List<ObservableCollection<Coord>> { points };
             //LineSeries.ItemsSource = points;
 
             points = new ObservableCollection<Coord>();
@@ -583,9 +585,9 @@ namespace Task2
                 var workbook = excelApp.Workbooks.Add();
                 excelApp.Sheets.Add();
                 excelApp.Sheets.Add();
-                ((Worksheet) excelApp.Sheets[1]).Name = "Исходные данные";
-                ((Worksheet) excelApp.Sheets[2]).Name = "Скользящие средние";
-                ((Worksheet) excelApp.Sheets[3]).Name = "Аддитивная модель";
+                ((Worksheet)excelApp.Sheets[1]).Name = "Исходные данные";
+                ((Worksheet)excelApp.Sheets[2]).Name = "Скользящие средние";
+                ((Worksheet)excelApp.Sheets[3]).Name = "Аддитивная модель";
 
 
                 for (var index = 0; index < tbl.Count; index++)
@@ -610,7 +612,7 @@ namespace Task2
                         }
                     }
                 }
-                
+
 
                 // check fielpath
                 if (!string.IsNullOrEmpty(excelFilePath))
@@ -672,7 +674,7 @@ namespace Task2
                 v = (DataView)DgTrand.DataContext;
                 t[2] = v.Table;
             }
-            SaveToExcel(t,path);
+            SaveToExcel(t, path);
             _loading.Close();
         }
 

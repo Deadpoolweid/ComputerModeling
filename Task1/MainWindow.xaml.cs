@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Reflection;
@@ -30,8 +31,6 @@ namespace Task1
 
         public MainWindow()
         {
-
-
             InitializeComponent();
         }
 
@@ -100,6 +99,7 @@ namespace Task1
 
         private void Main()
         {
+            _loading = new Loading();
             _loading.Show();
 
 

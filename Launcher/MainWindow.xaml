@@ -5,16 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Launcher"
         mc:Ignorable="d"
-        Title="Launcher" Height="157.895" Width="403.947">
+        Title="Компьютерное моделирование" Height="160" Width="400" ResizeMode="NoResize"
+        Closed="MainWindow_OnClosed">
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="20,0,20,0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="202" Height="31">
-            <ComboBoxItem Content="Аддитивная модель" HorizontalAlignment="Left" Width="200"/>
-            <ComboBoxItem Content="Мультипликативная модель" HorizontalAlignment="Left" Width="200"/>
-            <ComboBoxItem Content="Генерация случайных чисел" HorizontalAlignment="Left" Width="200"/>
-            <ComboBoxItem Content="СМО и анализ выборок" HorizontalAlignment="Left" Width="200"/>
-            <ComboBoxItem Content="Игра жизнь" HorizontalAlignment="Left" Width="200"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ComboBox Grid.Column="0" Grid.Row="1" x:Name="comboBox">
+            <ComboBoxItem Content="Аддитивная модель" />
+            <ComboBoxItem Content="Мультипликативная модель" />
+            <ComboBoxItem Content="Генерация случайных чисел" />
+            <ComboBoxItem Content="СМО и анализ выборок"/>
+            <ComboBoxItem Content="Игра жизнь"/>
         </ComboBox>
-        <Button x:Name="button" Content="Запуск" HorizontalAlignment="Left" Margin="246,53,0,0" VerticalAlignment="Top" Width="140" Height="31" Click="button_Click"/>
+        <Button Grid.Column="1" Grid.Row="1" x:Name="button" Content="Запуск" Margin="20,20,20,20" Click="button_Click"/>
 
     </Grid>
 </Window>
