@@ -17,6 +17,10 @@ namespace Task_3
 
         private double R;
 
+        public double x;
+
+        public double y;
+
         public Rand()
         {
             R = System.DateTime.Now.Millisecond;
@@ -33,7 +37,8 @@ namespace Task_3
         public double Next()
         {
             R = (R*a + c)%m;
-            return (double)R/m;
+            var rm = (double) R/m;
+            return x + (rm)*(y-x);
         }
     }
 
@@ -69,6 +74,8 @@ namespace Task_3
                 double[] arr = new double[(int)max];
 
                 Rand r = new Rand();
+                r.x = 0;
+                r.y = 100;
                 for (int i = 0; i < max; i++)
                 {
                     arr[i] = r.Next();
@@ -109,6 +116,9 @@ namespace Task_3
 
         private double value;
 
+        /// <summary>
+        /// Радиус окружности
+        /// </summary>
         private int r;
 
         /// <summary>
@@ -133,13 +143,14 @@ namespace Task_3
         public void Calculate()
         {
             Nc = 0;
-
+            Rand r = new Rand();
+            r.x = 0;
+            r.y = (double)this.r;
             for (int i = 0; i < N; i++)
             {
-                Random r = new Random(DateTime.Now.Millisecond);
-                x = r.NextDouble() * (this.r*2) + (-this.r) ;
-                y = r.NextDouble() * (this.r * 2) + (-this.r);
-                if (y * y + x * x <= Math.Pow(this.r,2))
+                x = r.Next();
+                y = r.Next();
+                if (y * y + x*x<= this.r*this.r)
                 {
                     Nc++;
                 }

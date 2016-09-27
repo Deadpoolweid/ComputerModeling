@@ -9,6 +9,8 @@
     <Grid>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="517">
             <MenuItem Header="MenuItem"/>
+            <TextBox x:Name="tx" Height="23" TextWrapping="Wrap" Text="0" Width="120"/>
+            <TextBox x:Name="ty" Height="23" TextWrapping="Wrap" Text="100" Width="120"/>
         </Menu>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,30,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="button" Content="Сгенерировать" HorizontalAlignment="Left" Margin="325,30,0,0" VerticalAlignment="Top" Width="182" Click="button_Click" Height="22"/>

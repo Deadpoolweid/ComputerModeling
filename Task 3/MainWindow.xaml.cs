@@ -35,6 +35,8 @@ namespace Task_3
             if (comboBox.SelectedIndex == 0)
             {
                 Rand r = new Rand(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text));
+                r.x = double.Parse(tx.Text);
+                r.y = double.Parse(ty.Text);
                 for (int i = 0; i < n; i++)
                 {
                     Data.AddRand(r.Next());
@@ -104,10 +106,10 @@ namespace Task_3
             else
             {
                 label1.Content = "r =";
-                textBox1.Text = "1";
+                textBox1.Text = "10000";
 
                 label2.Content = "N =";
-                textBox2.Text = "1000";
+                textBox2.Text = "100000";
 
                 textBox3.IsEnabled = false;
                 label3.Content = "";

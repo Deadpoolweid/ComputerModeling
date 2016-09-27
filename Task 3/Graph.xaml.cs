@@ -36,9 +36,37 @@ namespace Task_3
         {
             var points = new ObservableCollection<Coord>();
 
-            for (var i = 0; i < n.Count; i++)
+            var numbers = new List<double>();
+
+            var numberRepeats = new Dictionary<double,int>();
+
+            foreach (var number in x)
             {
-                points.Add(new Coord(n[i], x[i]));
+                if (!numbers.Exists(a => a == number))
+                {
+                    numbers.Add(number);
+                    numberRepeats.Add(number,1);
+                }
+                else
+                {
+                    numberRepeats[number]++;
+                }
+            }
+
+            
+
+            var ClashCount = new List<int>();
+
+            foreach (var number in numbers)
+            {
+                ClashCount.Add(numberRepeats[number]);
+            }
+
+            
+
+            for (var i = 0; i < numbers.Count; i++)
+            {
+                points.Add(new Coord(numbers[i], ClashCount[i]));
             }
 
             var dataSourceList = new List<ObservableCollection<Coord>> { points };
