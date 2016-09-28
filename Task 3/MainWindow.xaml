@@ -22,8 +22,8 @@
             <ComboBoxItem Content="Вычисление числа π" HorizontalAlignment="Left"/>
         </ComboBox>
         <ProgressBar x:Name="loading" HorizontalAlignment="Left" Height="17" Margin="10,57,0,0" VerticalAlignment="Top" Width="497"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="55,79,0,0" TextWrapping="Wrap" Text="1664525" VerticalAlignment="Top" Width="96"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="196,80,0,0" TextWrapping="Wrap" Text="1013904223" VerticalAlignment="Top" Width="139"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="55,79,0,0" TextWrapping="Wrap" Text="1664525" VerticalAlignment="Top" Width="96" ToolTip="Множитель"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="196,80,0,0" TextWrapping="Wrap" Text="1013904223" VerticalAlignment="Top" Width="139" ToolTip="Приращение"/>
         <Label x:Name="label1" Content="a =" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="40"/>
         <Label x:Name="label2" Content="c =" HorizontalAlignment="Left" Margin="156,76,0,0" VerticalAlignment="Top" Width="35"/>
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="381,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="123"/>

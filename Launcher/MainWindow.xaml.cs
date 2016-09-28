@@ -53,7 +53,7 @@ namespace Launcher
                     app4.ShowDialog();
                     break;
                 case 5:
-                    var app5 = new Life.Form1();
+                    var app5 = new GameOfLife.MainWindow();
                     app5.ShowDialog();
                     break;
             }

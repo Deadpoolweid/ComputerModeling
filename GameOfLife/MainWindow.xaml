@@ -1,0 +1,49 @@
+﻿<Window x:Class="GameOfLife.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameOfLife"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        Loaded="MainWindow_OnLoaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Button Click="Step_OnClick">Step</Button>
+        <Button Name="bStart" Grid.Row="1" Click="Start_OnClick">Start</Button>
+        <Button Grid.Row="2" Click="Clear_OnClick">Clear</Button>
+        <Label Name="lSpeed" Grid.Row="3">Speed</Label>
+        <Slider Name="sSpeed" Grid.Row="4" Minimum="100" Maximum="1000" SmallChange="20"></Slider>
+        <Label Name="lSize" Grid.Row="5">Size</Label>
+        <Slider Name="sMapSize" Grid.Row="6" Minimum="10" Maximum="25" SmallChange="1"></Slider>
+        <Label Name="lStep" Grid.Row="7">Step: </Label>
+
+
+        <Label Content="Стандартные конфигурации клеток" Grid.Row="8">
+            <Label.ToolTip>
+                <Grid>
+                    <Label>Some Tooltip</Label>
+                    <Image Source="Resources/Configurations.jpg" ></Image>
+                </Grid>
+            </Label.ToolTip>
+        </Label>
+        
+        
+        <UniformGrid Name="ugMap" Grid.Column="1" Grid.RowSpan="9" MouseLeftButtonDown="UgMap_OnMouseLeftButtonDown" MouseMove="UgMap_OnMouseMove"></UniformGrid>
+    </Grid>
+</Window>

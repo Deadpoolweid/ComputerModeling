@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -53,7 +54,7 @@ namespace Task_4
             aMax = Convert.ToInt32(textBox.Text);
             bMax = Convert.ToInt32(textBox_Copy.Text);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1000; i++)
             {
 
 
@@ -85,6 +86,32 @@ namespace Task_4
             }
 
             data.ItemsSource = table.DefaultView;
+
+
+            var style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty,"Промежутки между приходами клиентов (в минутах)"));
+            data.Columns[1].CellStyle= style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty,"Длительности обслуживания (в минутах)"));
+            data.Columns[2].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Условное время прихода клиента"));
+            data.Columns[3].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Момент начала обслуживания"));
+            data.Columns[4].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Момент конца обслуживания"));
+            data.Columns[5].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Длительность времени, проведённого клиентом в системе в целом"));
+            data.Columns[6].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Длительность времени, проведённого клиентом в ожидании обслуживания"));
+            data.Columns[7].CellStyle = style;
+            style = new Style(typeof(DataGridCell));
+            style.Setters.Add(new Setter(ToolTipProperty, "Время, проведённое системой в ожидании клиентов"));
+            data.Columns[8].CellStyle = style;
 
             int min = Data.H.Min();
 

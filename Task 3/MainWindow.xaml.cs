@@ -151,7 +151,6 @@ namespace Task_3
             this.IsEnabled = false;
             int s = comboBox.SelectedIndex;
             Graph g;
-            int n;
 
             List<double> nList = new List<double>();
 
