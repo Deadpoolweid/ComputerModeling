@@ -33,6 +33,8 @@ namespace Task_4
 
         private int aMax, bMax;
 
+        private int ExperimentsCount = 1000;
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Data.Clear();
@@ -54,7 +56,7 @@ namespace Task_4
             aMax = Convert.ToInt32(textBox.Text);
             bMax = Convert.ToInt32(textBox_Copy.Text);
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < ExperimentsCount; i++)
             {
 
 
@@ -175,7 +177,7 @@ namespace Task_4
             aMax = Convert.ToInt32(textBox.Text);
             bMax = Convert.ToInt32(textBox_Copy.Text);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < ExperimentsCount; i++)
             {
 
 
@@ -230,7 +232,7 @@ namespace Task_4
 
             dData datamain = new dData(Data.A,Data.B, Data.C, Data.D, Data.E, Data.F, Data.G,Data.H);
 
-            dData data = execExperiment(5);
+            dData data = execExperiment(ExperimentsCount);
             Fisher f = new Fisher(Data.H.ToArray(),data.H.ToArray());
             f.Show();
 
@@ -242,7 +244,7 @@ namespace Task_4
         {
             IsEnabled = false;
 
-            dData data = execExperiment(5);
+            dData data = execExperiment(ExperimentsCount);
 
             Student s = new Student(Data.H.ToArray(),data.H.ToArray());
             s.Show();
@@ -256,7 +258,7 @@ namespace Task_4
 
             List<int> Second = new List<int>();
             Random r = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < ExperimentsCount; i++)
             {
                 Second.Add(r.Next(1,aMax));
             }
