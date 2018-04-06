@@ -214,3 +214,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
